@@ -7,7 +7,7 @@
 */
 
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Item from './Item.js';
 import MenuBar from './MenuBar';
 import BarChart from './BarChart';
@@ -21,44 +21,38 @@ const App = (props) => {
   const [file, setFile] = useState('pr1.json');
   const [data, setData] = useState(JSON.parse(localStorage.getItem('pr1.json')).data);
   const [title, setTitle] = useState(JSON.parse(localStorage.getItem('pr1.json')).title);
-  const [labels, setLabels] = useState(Object.keys(data[0]));
+  const [labels, setLabels] = useState(Object.keys(fileData.data[0]));
 
-  const handleChange = (event) => {
-    let newData = structuredClone(data);
-    let pointIndex = event.target.attributes.pointId.value;
-    if (pointIndex == "caption") {
-      newData.title = event.target.value;
-    }
-    else {
-      let keys = Object.keys(newData.data[0]);
-      let attributeIndex = event.target.attributes.id.value;
-      if (pointIndex == "header") {
-        let newKey = event.target.value;
-        newData.data.forEach((item, index) => {
-          let tmp = {};
-          console.log(keys);
-          keys.forEach((attribute, index1) => {
-            console.log(attribute + " " + attributeIndex);
-            if (index1 == attributeIndex) {
-              tmp[newKey] = item[attribute];
-            }
-            else {
-              tmp[attribute] = item[attribute];
-            }
-          });
-          newData.data[index] = structuredClone(tmp);
-        });
-      }
-      else {
-        newData.data[pointIndex][keys[attributeIndex]] =
-          parseInt(event.target.value);
-      }
-    }
-    setData(newData);
+  const handleSave = () => {
+    localStorage.setItem(file, JSON.stringify({title, data}));
   };
+  const handleNew = (fileName) => {
+    setFile(fileName);
+    setData([]);
+    setTitle("");
+    setLabels(['', '']);
+
+  };
+  const handleLoad = (fileName) => {
+    const fileData = JSON.parse(localStorage.getItem(fileName)); 
+    setFile(fileName);
+    setData(fileData.data);
+    setTitle(fileData.title);
+    setLabels(Object.keys(fileData.data[0] ?? ['','']));
+  };
+  const handleSaveAs = (fileName) => {
+    setFile(fileName);
+    localStorage.setItem(fileName, JSON.stringify({ title, data }));
+  };
+  
   return (
     <Container className="App" >
-      <MenuBar></MenuBar>
+      <MenuBar
+        handleSave={handleSave}
+        handleNew={handleNew}
+        handleLoad={handleLoad}
+        handleSaveAs={handleSaveAs}
+      />
       <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }} >
         <Item> 
          <Editor

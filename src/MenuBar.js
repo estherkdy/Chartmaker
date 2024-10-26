@@ -36,7 +36,6 @@ const MenuBar = (props) => {
   const [loadOpen, setLoadOpen] = useState(false);
 
   const openFile = Boolean(anchorElFile);
-  console.log(anchorElFile);
   const handleClickFile = (event) => {
     setAnchorElFile(event.currentTarget);
   };
@@ -66,19 +65,33 @@ const MenuBar = (props) => {
             open={openFile}
             onClose={handleCloseFile}
           >
+            {/* when menu items are clicked,their functions are called*/}
             <MenuItem id={'new'} onClick={handleNewOpen}>New</MenuItem>
             <MenuItem onClick={handleLoadOpen}>Load</MenuItem>
-            <MenuItem onClick={props.handleSave}>Save</MenuItem>
+            <MenuItem onClick={handleSave}>Save</MenuItem>
             <MenuItem id={'saveAs'} onClick={handleNewOpen}>Save As</MenuItem>
           </Menu>
           <Typography variant="h6" component="div" align="center"
             width="100%">
             Project 1
           </Typography>
+          <NewFile
+            open={newOpen}
+            handleCloseFile={save ? handleSaveAsClose : handleNewClose}
+          />
+          <LoadFile
+            open={loadOpen}
+            handleCloseFile={handleLoadClose}
+          />
         </Toolbar>
       </AppBar>
     </Box>
   );
+
+  function handleSave() {
+    props.handleSave();
+    handleCloseFile();
+  }
 
   /*
    * when a new file is needed
@@ -130,7 +143,6 @@ const MenuBar = (props) => {
    */
   function handleSaveAsClose(file, cancel) {
       setNewOpen(false);
-      console.log(file)
       if (cancel) {
           props.handleSaveAs(file);
       }
