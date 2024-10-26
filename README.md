@@ -1,70 +1,23 @@
-# Getting Started with Create React App
+React ChartMaker
+Project Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React ChartMaker is a web application that allows users to create and edit bar charts using Coordinated Multiple Views and Web Storage API. This project features a user-friendly GUI with two main components, Editor and BarChart, along with a menubar to handle file operations. Built with the React framework and MUI library, the app provides a seamless and interactive experience, with real-time updates to the chart as the user edits data in the Editor component.
+Key Features
 
-## Available Scripts
+    Editor Component
+        The Editor component is where users can add, modify, and delete data points.
+        Any changes made in the Editor are immediately reflected in the BarChart, allowing for dynamic data manipulation.
+        Users can input data attributes such as year and population, which are displayed in the bar chart.
 
-In the project directory, you can run:
+    BarChart Component
+        The BarChart visually displays data points added in the Editor as individual bars.
+        Each bar can be selected or deselected with a mouse click, with selected bars highlighted in red and unselected bars in blue.
+        Hovering over a bar displays a tooltip, which shows the year and population attributes of the data point, with the tooltip background color matching the bar color for easy identification.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    Menubar with File Menu
+        The menubar provides a File menu that supports various file operations using the Web Storage API:
+            New: Clears the current data and creates a new chart.
+            Load: Loads saved data from the local storage.
+            Save: Saves the current chart data to local storage in JSON format.
+            Save As: Allows the user to save the current chart under a new name in local storage.
+        All data is saved and loaded in JSON format, ensuring compatibility and ease of use.
