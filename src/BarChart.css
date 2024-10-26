@@ -7,6 +7,7 @@
 * Version: 1.0
 */
 /* The svg element */
+
 svg {
   border: none;
   font-family: Arial;
@@ -22,20 +23,20 @@ svg {
 }
 
 /* Labels and values text */
-#labels,
-#values {
+#xLabels,
+#yLabels {
   font-size: 1pt;
   fill: grey;
 }
 
 /* The name of the first attribute */
-#labels #name {
+#xLabels #name {
   font-size: 2pt;
 }
 
 /* The name of the second attribute */
-#values #name {
-  font-size: 2pt;
+#yLabels #name {
+  font-size: -5rem;
   writing-mode: tb;
   text-orientation: upright;
 }
@@ -51,6 +52,11 @@ svg {
   fill: dodgerblue;
 }
 
+ 
+.clicked {
+  fill: red;
+}
+
 /* Tooltip text */
 #tooltip {
   font-size: 2pt;
@@ -61,7 +67,7 @@ svg {
 
 /* Tooltip background */
 #tooltip rect {
-  fill: lightgrey;
+  
   rx: 2px;
   ry: 2px;
 }
@@ -70,4 +76,9 @@ svg {
 #tooltip tspan {
   padding: 10px;
   fill: black;
+}
+
+#xLabel, #yLabel {
+  font-size: 2px;
+  font-weight: normal;
 }

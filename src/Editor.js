@@ -138,9 +138,12 @@ const Editor = (props) => {
           sx={{ ...editor_style.textfield_style }}
         />
       </div>
+      <div>
+        Data:
+      </div>
 
       {/*  going through the data array */}
-      <div>
+      <div className='data-group'>
         {data.map((datum, i) =>
           <div key={'datum ' + i}>
             <TextField
@@ -164,7 +167,7 @@ const Editor = (props) => {
                   color: 'rgb(25, 117, 210)',
                 }
               }
-            >{'DELETE'}</Button>
+            >{'DEL'}</Button>
 
           </div>
         )}

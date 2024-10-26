@@ -21,7 +21,7 @@ const App = (props) => {
   const [file, setFile] = useState('pr1.json');
   const [data, setData] = useState(JSON.parse(localStorage.getItem('pr1.json')).data);
   const [title, setTitle] = useState(JSON.parse(localStorage.getItem('pr1.json')).title);
-  const [labels, setLabels] = useState(["",""]);
+  const [labels, setLabels] = useState(Object.keys(data[0]));
 
   const handleChange = (event) => {
     let newData = structuredClone(data);
