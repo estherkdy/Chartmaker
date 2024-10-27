@@ -5,3 +5,10 @@
 * Author: Denis Gracanin
 * Version: 1.0
 */
+.filename {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 20px;
+}

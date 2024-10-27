@@ -157,7 +157,7 @@ function NewFile(props) {
 
   //close component if pressing cancel
   function handleCancel() {
-      props.handleClose(file, false);
+      props.handleCloseFile(file, false);
   };
 
   //isn't able to create new data if no file name is included

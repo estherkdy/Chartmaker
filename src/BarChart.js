@@ -118,7 +118,9 @@ const BarChart = (props) => {
 
 
         //get the max data to set the range / number of lines / step
-        let yArray = dataset.map(item => isNaN(parseFloat(item[props.labels[1]])) ? 0 : parseFloat(item[props.labels[1]]))
+        const correctLabels = dataset.length > 0 ? Object.keys(dataset[0]) : ['', ''];
+        let yArray = dataset.map(item => isNaN(parseFloat(item[correctLabels[1]])) ? 0 : parseFloat(item[correctLabels[1]]))
+        console.log(yArray);
         let max = Math.max(...yArray);
 
         let lineCount;
@@ -249,7 +251,7 @@ const BarChart = (props) => {
     useEffect(() => {
         init();
         paint();
-    }, [props.data, props.title, props.labels[0], props.labels[1]]);
+    }, [props.data, props.title, props.labels]);
 
     return (
         <Box ref={myReference} width="100%" height="100%">
